@@ -1,0 +1,231 @@
+swagger: '2.0'
+info:
+  description: defaultDescription
+  version: 1.0.0
+  title: defaultTitle
+paths:
+  /api/planets/{id}:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          minimum: 1
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Planets'
+  /api/films/{id}:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          minimum: 1
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Films'
+  /api/people/{id}:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          minimum: 1
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/People'
+  /api/species/1:
+    get:
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Species'
+  '/api/{param0}':
+    get:
+      produces:
+        - application/json
+      parameters:
+        - name: param0
+          in: path
+          description: 'Example values form path are: ''starships'' and ''vehicles'''
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+definitions:
+  Planets:
+    type: object
+    properties:
+      name:
+        type: string
+      rotation_period:
+        type: string
+      orbital_period:
+        type: string
+      diameter:
+        type: string
+      climate:
+        type: string
+      gravity:
+        type: string
+      terrain:
+        type: string
+      surface_water:
+        type: string
+      population:
+        type: string
+      residents:
+        type: array
+        items:
+          type: string
+      films:
+        type: array
+        items:
+          type: string
+      created:
+        type: string
+      edited:
+        type: string
+      url:
+        type: string
+  Films:
+    type: object
+    properties:
+      title:
+        type: string
+      episode_id:
+        type: integer
+        format: int32
+      opening_crawl:
+        type: string
+      director:
+        type: string
+      producer:
+        type: string
+      release_date:
+        type: string
+      characters:
+        type: array
+        items:
+          type: string
+      planets:
+        type: array
+        items:
+          type: string
+      starships:
+        type: array
+        items:
+          type: string
+      vehicles:
+        type: array
+        items:
+          type: string
+      species:
+        type: array
+        items:
+          type: string
+      created:
+        type: string
+      edited:
+        type: string
+      url:
+        type: string
+  People:
+    type: object
+    properties:
+      name:
+        type: string
+      height:
+        type: string
+      mass:
+        type: string
+      hair_color:
+        type: string
+      skin_color:
+        type: string
+      eye_color:
+        type: string
+      birth_year:
+        type: string
+      gender:
+        type: string
+      homeworld:
+        type: string
+      films:
+        type: array
+        items:
+          type: string
+      species:
+        type: array
+        items:
+          type: object
+      vehicles:
+        type: array
+        items:
+          type: string
+      starships:
+        type: array
+        items:
+          type: string
+      created:
+        type: string
+      edited:
+        type: string
+      url:
+        type: string
+  Species:
+    properties:
+      name:
+        type: string
+      classification:
+        type: string
+      designation:
+        type: string
+      average_height:
+        type: string
+      skin_colors:
+        type: string
+      hair_colors:
+        type: string
+      eye_colors:
+        type: string
+      average_lifespan:
+        type: string
+      homeworld:
+        type: string
+      language:
+        type: string
+      people:
+        type: array
+        items:
+          type: string
+      films:
+        type: array
+        items:
+          type: string
+      created:
+        type: string
+      edited:
+        type: string
+      url:
+        type: string

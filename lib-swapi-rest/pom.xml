@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>core-ms-rest-optional-stream</artifactId>
+        <groupId>com.rest.optional.stream</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lib-swapi-rest</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.20</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.11.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.jersey.contribs/jersey-multipart -->
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-multipart</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <properties>
+        <!-- Project setup -->
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- Depencencies version -->
+        <dep.version.plugin.swagger.codegen>2.1.6</dep.version.plugin.swagger.codegen>
+        <!-- Generation setup -->
+        <gen.package>${project.groupId}.lib.ms.soggetto</gen.package> <!-- va sostituita la parte "neib0.neibdaclx1" con il <partitario>.<nomeServizio> -->
+        <gen.api.version>20200913</gen.api.version> <!-- va inserita la data del giorno di generazione delle classi -->
+        <gen.api.swagger>swapi_${gen.api.version}.yml</gen.api.swagger> <!-- nome file json sotto resources -->
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>compiler</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-codegen-maven-plugin</artifactId>
+                        <version>${dep.version.plugin.swagger.codegen}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+                                    <inputSpec>${project.basedir}/src/main/resources/${gen.api.swagger}</inputSpec>
+                                    <language>java</language>
+                                    <modelPackage>${gen.package}</modelPackage>
+                                    <!--generateSupportingFiles>false</generateSupportingFiles>
+                                    <generateApis>false</generateApis-->
+                                    <output>${project.basedir}</output>
+                                    <configOptions>
+                                        <sourceFolder>src/main/java</sourceFolder>
+                                        <dateLibrary>java8</dateLibrary>
+                                        <java8>true</java8>
+                                    </configOptions>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+</project>
