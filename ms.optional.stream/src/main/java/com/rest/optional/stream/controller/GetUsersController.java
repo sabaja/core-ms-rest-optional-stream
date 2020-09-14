@@ -37,7 +37,6 @@ public class GetUsersController {
             @ApiResponse(code = HTTP_PRECON_FAILED, message = PRECONDITION_FAILED)
     })
     public ResponseEntity<String> getUsers() {
-
         return ResponseEntity.ok("");
     }
 
