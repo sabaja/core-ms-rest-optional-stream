@@ -60,7 +60,7 @@
         <!-- Depencencies version -->
         <dep.version.plugin.swagger.codegen>2.1.6</dep.version.plugin.swagger.codegen>
         <!-- Generation setup -->
-        <gen.package>${project.groupId}.lib.ms.soggetto</gen.package> <!-- va sostituita la parte "neib0.neibdaclx1" con il <partitario>.<nomeServizio> -->
+        <gen.package>${project.groupId}</gen.package> <!-- va sostituita la parte "neib0.neibdaclx1" con il <partitario>.<nomeServizio> -->
         <gen.api.version>20200913</gen.api.version> <!-- va inserita la data del giorno di generazione delle classi -->
         <gen.api.swagger>swapi_${gen.api.version}.yml</gen.api.swagger> <!-- nome file json sotto resources -->
     </properties>

@@ -1,4 +1,4 @@
-package com.rest.optional.stream.api.bin;
+package com.rest.optional.stream.api;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -6,11 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.Serializable;
 
 @Data
-@Slf4j
 public final class OS implements Serializable {
     private static final long serialVersionUID = -14389162131589141L;
-
-    static {
-        log.info("Installing OS");
-    }
 }

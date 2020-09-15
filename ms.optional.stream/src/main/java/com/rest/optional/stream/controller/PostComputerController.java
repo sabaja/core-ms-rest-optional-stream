@@ -1,6 +1,6 @@
 package com.rest.optional.stream.controller;
 
-import com.rest.optional.stream.api.dto.ComputerDto;
+import com.rest.optional.stream.dto.ComputerDto;
 import com.rest.optional.stream.connector.GetUsersRestConnector;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

@@ -1,6 +1,5 @@
 package com.rest.optional.stream.connector;
 
-import com.rest.optional.stream.api.dto.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,9 +16,9 @@ public class GetUsersRestConnector {
     @Autowired
     private RestTemplate restTemplate;
 
-    public List<UserData> getAllUser() {
+    public List<String> getAllUser() {
 
-        return Collections.singletonList(new UserData());
+        return Collections.singletonList("new UserData()");
     }
 
 }

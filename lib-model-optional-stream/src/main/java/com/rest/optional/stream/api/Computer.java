@@ -1,6 +1,7 @@
-package com.rest.optional.stream.api.bin;
+package com.rest.optional.stream.api;
 
-import com.rest.optional.stream.util.constants.DomainElement;
+
+import com.rest.optional.stream.constants.DomainElement;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

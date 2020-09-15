@@ -18,6 +18,7 @@
     <modules>
         <module>ms.optional.stream</module>
         <module>lib-swapi-rest</module>
+        <module>lib-model-optional-stream</module>
     </modules>
 
 
