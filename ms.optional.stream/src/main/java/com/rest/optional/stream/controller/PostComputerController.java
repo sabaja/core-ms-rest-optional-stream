@@ -1,7 +1,7 @@
 package com.rest.optional.stream.controller;
 
-import com.rest.optional.stream.dto.ComputerDto;
-import com.rest.optional.stream.connector.GetUsersRestConnector;
+import com.rest.optional.stream.api.dto.ComputerDto;
+import com.rest.optional.stream.connector.GetFilmsRestConnector;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -23,7 +23,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 public class PostComputerController {
 
     @Autowired
-    GetUsersRestConnector connector;
+    GetFilmsRestConnector connector;
 
     @PostMapping(path = "/post/computer")
     @ApiOperation(value = "API che crea un nuovo computer")

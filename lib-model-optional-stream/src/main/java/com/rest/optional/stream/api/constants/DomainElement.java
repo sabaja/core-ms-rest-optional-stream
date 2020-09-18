@@ -1,4 +1,4 @@
-package com.rest.optional.stream.constants;
+package com.rest.optional.stream.api.constants;
 
 import java.util.Map;
 import java.util.function.Function;

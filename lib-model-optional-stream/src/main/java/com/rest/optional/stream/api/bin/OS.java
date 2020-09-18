@@ -1,7 +1,6 @@
-package com.rest.optional.stream.api;
+package com.rest.optional.stream.api.bin;
 
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 

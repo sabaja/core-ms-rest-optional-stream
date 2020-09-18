@@ -1,6 +1,6 @@
-package com.rest.optional.stream.bin;
+package com.rest.optional.stream.api.bin;
 
-import com.rest.optional.stream.constants.DomainElement;
+import com.rest.optional.stream.api.constants.DomainElement;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ComputerElementBin {
+public class DomainElementBin {
     private BigInteger id;
     private String name;
     private List<DomainElement> domainElements;

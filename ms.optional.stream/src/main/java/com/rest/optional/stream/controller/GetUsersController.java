@@ -1,6 +1,6 @@
 package com.rest.optional.stream.controller;
 
-import com.rest.optional.stream.connector.GetUsersRestConnector;
+import com.rest.optional.stream.connector.GetFilmsRestConnector;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -23,7 +23,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 public class GetUsersController {
 
     @Autowired
-    private GetUsersRestConnector connector;
+    private GetFilmsRestConnector connector;
 
     @GetMapping(path = "/users")
     @ApiOperation(value = "API che crea un nuovo computer")
