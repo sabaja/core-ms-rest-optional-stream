@@ -3,6 +3,7 @@ package com.rest.optional.stream.connector;
 import com.rest.optional.stream.Films;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -22,14 +23,16 @@ public class GetFilmsRestConnector {
     @Value("${swapi_url_getFilms}")
     public String uri;
     @Autowired
+    @Qualifier("restTemplate")
     private RestTemplate restTemplate;
 
     public List<Films> getAllFilms() {
         ResponseEntity<List<Films>> response = null;
         try {
             log.info("START getAllFilms");
-            response = restTemplate.exchange("https://swapi.dev/api/get/Films", HttpMethod.GET, null, new ParameterizedTypeReference<List<Films>>() {
+            response = restTemplate.exchange("https://swapi.dev/api/films", HttpMethod.GET, null, new ParameterizedTypeReference<List<Films>>() {
             });
+            log.info("{}", response.getBody());
 
         } catch (Exception e) {
             log.info("", e);
