@@ -2,6 +2,10 @@ package com.rest.optional.stream.util.constants;
 
 public class HttpStatusMessage {
 
+    private HttpStatusMessage() {
+        throw new UnsupportedOperationException("This is an utility class and cannot be instatiated");
+    }
+
     public static class Constants {
         public static final String OK = "Ok";
         public static final String BAD_REQUEST = "Bad Request";
@@ -11,4 +15,5 @@ public class HttpStatusMessage {
         public static final String NOT_FOUND = "Not Found";
         public static final String PRECONDITION_FAILED = "Precondition Failed";
     }
+
 }

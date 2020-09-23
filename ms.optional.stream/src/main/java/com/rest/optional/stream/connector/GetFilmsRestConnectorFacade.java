@@ -1,7 +1,7 @@
 package com.rest.optional.stream.connector;
 
-import com.rest.optional.stream.ArrayFilms;
 import com.rest.optional.stream.Films;
+import com.rest.optional.stream.FilmsArray;
 import com.rest.optional.stream.connector.util.BaseConnector;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class GetFilmsRestConnectorFacade extends BaseConnector<ArrayFilms> {
+public class GetFilmsRestConnectorFacade extends BaseConnector<FilmsArray> {
 
     @Value("${swapi_url_getFilms}")
     public String uri;
@@ -40,8 +40,8 @@ public class GetFilmsRestConnectorFacade extends BaseConnector<ArrayFilms> {
     }
 
 
-    public List<ArrayFilms> getFilms() {
-        Collection<ArrayFilms> readValues = null;
+    public List<FilmsArray> getFilms() {
+        Collection<FilmsArray> readValues = null;
         try {
             log.info("START getAllFilms");
             final String url = "https://swapi.dev/api/films";

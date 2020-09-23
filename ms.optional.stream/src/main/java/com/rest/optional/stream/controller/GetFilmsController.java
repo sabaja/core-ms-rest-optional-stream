@@ -1,6 +1,6 @@
 package com.rest.optional.stream.controller;
 
-import com.rest.optional.stream.ArrayFilms;
+import com.rest.optional.stream.FilmsArray;
 import com.rest.optional.stream.service.FilmsService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,7 +39,7 @@ public class GetFilmsController {
             @ApiResponse(code = HTTP_BAD_REQUEST, message = BAD_REQUEST),
             @ApiResponse(code = HTTP_PRECON_FAILED, message = PRECONDITION_FAILED)
     })
-    public ResponseEntity<List<ArrayFilms>> getFilms() {
+    public ResponseEntity<List<FilmsArray>> getFilms() {
         return ResponseEntity.ok(filmsService.getFilms());
     }
 

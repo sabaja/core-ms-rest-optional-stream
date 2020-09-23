@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.Generated;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,8 +12,9 @@ import java.util.Objects;
 
 @Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-09-13T18:25:44.628+02:00")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ArrayFilms {
+public class FilmsArray implements Serializable {
 
+    private static final long serialVersionUID = 2962199792797078463L;
     private Integer count = null;
     private Integer next = null;
     private Integer previous = null;
@@ -68,18 +70,18 @@ public class ArrayFilms {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ArrayFilms arrayFilms = (ArrayFilms) o;
-        return Objects.equals(this.count, arrayFilms.count) &&
-                Objects.equals(this.next, arrayFilms.next) &&
-                Objects.equals(this.previous, arrayFilms.previous) &&
-                Objects.equals(this.filmsList, arrayFilms.filmsList);
+        FilmsArray filmsArray = (FilmsArray) o;
+        return Objects.equals(this.count, filmsArray.count) &&
+                Objects.equals(this.next, filmsArray.next) &&
+                Objects.equals(this.previous, filmsArray.previous) &&
+                Objects.equals(this.filmsList, filmsArray.filmsList);
     }
 
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ArrayFilms {\n");
+        sb.append("class FilmsArray {\n");
         sb.append("    count: ").append(toIndentedString(count)).append("\n");
         sb.append("    episodeId: ").append(toIndentedString(next)).append("\n");
         sb.append("    next: ").append(toIndentedString(previous)).append("\n");
