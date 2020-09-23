@@ -1,6 +1,7 @@
 package com.rest.optional.stream.controller;
 
-import com.rest.optional.stream.FilmsArray;
+import com.rest.optional.stream.api.resources.FilmsResource;
+import com.rest.optional.stream.assembler.FilmsAssembler;
 import com.rest.optional.stream.service.FilmsService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -12,8 +13,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 import static com.rest.optional.stream.util.constants.HttpStatusMessage.Constants.*;
 import static java.net.HttpURLConnection.*;
@@ -27,6 +26,8 @@ public class GetFilmsController {
 
     @Autowired
     private FilmsService filmsService;
+    @Autowired
+    private FilmsAssembler assembler;
 
     @GetMapping(path = "/films")
     @ApiOperation(value = "API che ritorna un film")
@@ -39,8 +40,8 @@ public class GetFilmsController {
             @ApiResponse(code = HTTP_BAD_REQUEST, message = BAD_REQUEST),
             @ApiResponse(code = HTTP_PRECON_FAILED, message = PRECONDITION_FAILED)
     })
-    public ResponseEntity<List<FilmsArray>> getFilms() {
-        return ResponseEntity.ok(filmsService.getFilms());
+    public ResponseEntity<FilmsResource> getFilms() {
+        return ResponseEntity.ok(assembler.toResource(filmsService.getFilms()));
     }
 
 }
