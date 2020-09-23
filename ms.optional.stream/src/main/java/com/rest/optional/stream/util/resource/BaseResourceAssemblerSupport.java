@@ -2,10 +2,11 @@ package com.rest.optional.stream.util.resource;
 
 
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.ResourceSupport;
-import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 
-public abstract class BaseResourceAssemblerSupport<T, D extends ResourceSupport> extends ResourceAssemblerSupport<T, D> {
+
+public abstract class BaseResourceAssemblerSupport<T, D extends RepresentationModel<?>> extends RepresentationModelAssemblerSupport<T, D> {
 
     public BaseResourceAssemblerSupport(Class<?> controllerClass, Class<D> resourceType) {
         super(controllerClass, resourceType);

@@ -41,7 +41,7 @@ public class GetFilmsController {
             @ApiResponse(code = HTTP_PRECON_FAILED, message = PRECONDITION_FAILED)
     })
     public ResponseEntity<FilmsResource> getFilms() {
-        return ResponseEntity.ok(assembler.toResource(filmsService.getFilms()));
+        return ResponseEntity.ok(assembler.toModel(filmsService.getFilms()));
     }
 
 }
