@@ -13,7 +13,7 @@ import java.util.List;
         value = "FilmsResource",
         description = "swapi Films"
 )
-public class FilmsResource extends BaseResource implements Serializable {
+public class FilmsResource extends BaseResource<FilmsResource> implements Serializable {
     private static final long serialVersionUID = 5970247953747542368L;
 
     @ApiModelProperty("Arrays of Swapi films")

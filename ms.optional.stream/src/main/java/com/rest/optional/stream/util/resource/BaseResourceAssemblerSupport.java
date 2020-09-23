@@ -1,11 +1,12 @@
 package com.rest.optional.stream.util.resource;
 
 
+import aQute.bnd.annotation.component.Component;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 
-
+@Component
 public abstract class BaseResourceAssemblerSupport<T, D extends RepresentationModel<?>> extends RepresentationModelAssemblerSupport<T, D> {
 
     public BaseResourceAssemblerSupport(Class<?> controllerClass, Class<D> resourceType) {

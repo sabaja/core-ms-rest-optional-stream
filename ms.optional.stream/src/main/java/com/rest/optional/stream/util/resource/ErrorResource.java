@@ -1,12 +1,11 @@
 package com.rest.optional.stream.util.resource;
 
-import com.rest.optional.stream.api.resources.FilmsResource;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.util.List;
 import java.util.Map;
 
-public class ErrorResource extends RepresentationModel<FilmsResource> {
+public class ErrorResource<T extends RepresentationModel<? extends T>> extends RepresentationModel<T> {
     private Map<String, List<ErrorMessage>> returnMessages;
 
     public ErrorResource() {

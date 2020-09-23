@@ -2,9 +2,10 @@ package com.rest.optional.stream.util.resource;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.hateoas.RepresentationModel;
 
 
-public class BaseResource extends ErrorResource {
+public class BaseResource<T extends RepresentationModel<? extends T>> extends ErrorResource<T> {
 
     private String entityId;
 
