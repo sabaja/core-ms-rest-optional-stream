@@ -1,15 +1,29 @@
 package com.rest.optional.stream.mapper;
 
+import com.rest.optional.stream.Films;
+import com.rest.optional.stream.FilmsArray;
 import com.rest.optional.stream.api.bin.FilmsBin;
 import com.rest.optional.stream.api.resources.FilmsResource;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Component
 @Mapper(componentModel = "spring")
 public interface FilmsMapper {
 
-    @Mapping(target = "filmArrays", source = "filmsArrays")
-    FilmsResource binToResource(FilmsBin bin);
+
+    default FilmsResource binToResource(FilmsBin bin) {
+        List<Films> films = new ArrayList<>();
+        Optional.ofNullable(bin)
+                .map(FilmsBin::getFilmsArrays)
+                .map(FilmsArray::getFilmsList)
+                .ifPresent(films::addAll);
+        return new FilmsResource(films);
+    }
+
+
 }

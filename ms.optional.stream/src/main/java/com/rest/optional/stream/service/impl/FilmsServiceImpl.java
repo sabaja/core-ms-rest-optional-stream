@@ -6,30 +6,35 @@ import com.rest.optional.stream.api.bin.FilmsBin;
 import com.rest.optional.stream.connector.GetFilmsRestConnectorFacade;
 import com.rest.optional.stream.mapper.FilmsMapper;
 import com.rest.optional.stream.service.FilmsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
+@Slf4j
 public class FilmsServiceImpl implements FilmsService {
 
     @Autowired
     FilmsMapper mapper;
     @Autowired
     private GetFilmsRestConnectorFacade connectorFacade;
+    @Value("${swapi.url.get.films}")
+    private String url;
 
     @Override
     public Films getFilm() {
-        return connectorFacade.getFilm();
+        return connectorFacade.getFilm("");//TODO
     }
 
     @Override
     public FilmsBin getFilms() {
-        return createFimsBin(connectorFacade.getFilms());
+        final FilmsArray films = connectorFacade.getFilms(url);
+        log.info("{}", films);
+        return createFimsBin(films);
     }
 
-    private FilmsBin createFimsBin(List<FilmsArray> films) {
+    private FilmsBin createFimsBin(FilmsArray films) {
         return FilmsBin.builder()
                 .filmsArrays(films)
                 .build();

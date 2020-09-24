@@ -1,6 +1,6 @@
 package com.rest.optional.stream.api.resources;
 
-import com.rest.optional.stream.FilmsArray;
+import com.rest.optional.stream.Films;
 import com.rest.optional.stream.util.resource.BaseResource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,14 +17,23 @@ public class FilmsResource extends BaseResource<FilmsResource> implements Serial
     private static final long serialVersionUID = 5970247953747542368L;
 
     @ApiModelProperty("Arrays of Swapi films")
-    private List<FilmsArray> filmArrays;
+    private List<Films> films;
 
-    public List<FilmsArray> getFilmArrays() {
-        return filmArrays;
+    public FilmsResource() {
+        //Default Constructor
+
     }
 
-    public void setFilmArrays(List<FilmsArray> filmArrays) {
-        this.filmArrays = filmArrays;
+    public FilmsResource(List<Films> films) {
+        this.films = films;
+    }
+
+    public List<Films> getFilms() {
+        return films;
+    }
+
+    public void setFilms(List<Films> films) {
+        this.films = films;
     }
 
     @Override
@@ -35,20 +44,20 @@ public class FilmsResource extends BaseResource<FilmsResource> implements Serial
 
         FilmsResource that = (FilmsResource) o;
 
-        return getFilmArrays() != null ? getFilmArrays().equals(that.getFilmArrays()) : that.getFilmArrays() == null;
+        return getFilms() != null ? getFilms().equals(that.getFilms()) : that.getFilms() == null;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (getFilmArrays() != null ? getFilmArrays().hashCode() : 0);
+        result = 31 * result + (getFilms() != null ? getFilms().hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "FilmsResource{" +
-                "filmArrays=" + filmArrays +
+                "films=" + films +
                 '}';
     }
 }

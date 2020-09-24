@@ -26,4 +26,7 @@ public abstract class BaseConnector<T> {
         });
     }
 
+    public final T getVaule(String url, Class<T> clazz) {
+        return restTemplate.getForObject(url, clazz);
+    }
 }
