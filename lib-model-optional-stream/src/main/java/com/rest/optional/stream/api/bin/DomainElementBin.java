@@ -1,6 +1,6 @@
 package com.rest.optional.stream.api.bin;
 
-import com.rest.optional.stream.api.constants.DomainElement;
+import com.rest.optional.stream.api.constants.ComputerType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +16,5 @@ import java.util.List;
 public class DomainElementBin {
     private BigInteger id;
     private String name;
-    private List<DomainElement> domainElements;
+    private List<ComputerType> computerTypes;
 }
