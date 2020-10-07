@@ -1,6 +1,6 @@
 package com.rest.optional.stream.controller;
 
-import com.rest.optional.stream.connector.GetFilmsRestConnectorFacade;
+import com.rest.optional.stream.connector.rest.GetFilmsRestConnectorFacade;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;

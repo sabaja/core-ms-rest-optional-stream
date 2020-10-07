@@ -5,18 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Entity(name = "osEntity")
 @Table(name = "T_PAD_OS")
+@SequenceGenerator(name = "os_sequence", sequenceName = "os_sequence", allocationSize = 1)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OsEntity {
+public class OsEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "os_sequence")
     @Column(name = "ID", updatable = false, nullable = false)
     private BigInteger id;
 

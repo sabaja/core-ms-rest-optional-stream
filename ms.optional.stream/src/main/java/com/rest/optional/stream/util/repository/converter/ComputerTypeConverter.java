@@ -19,11 +19,12 @@ public class ComputerTypeConverter implements AttributeConverter<ComputerType, S
             return null;
         }
         switch (computerType) {
-            case MAIN_FRAME:
+            case SERVER:
             case PERSONAL_COMPUTER:
             case WORKSTATION:
             case TABLET:
             case SUPER_COMPUTER:
+            case PHONE:
                 return computerType.getValue();
             case NOT_DEFINED:
                 return ND;
@@ -38,13 +39,14 @@ public class ComputerTypeConverter implements AttributeConverter<ComputerType, S
             return null;
         }
         switch (attribute) {
-            case "MAIN_FRAME":
-                return MAIN_FRAME;
+            case "SERVER":
+                return SERVER;
             case "PERSONAL_COMPUTER":
                 return PERSONAL_COMPUTER;
             case "WORKSTATION":
                 return WORKSTATION;
-
+            case "CELLULAR":
+                return PHONE;
             case "TABLET":
                 return TABLET;
             case "AI_SUPER_PC":

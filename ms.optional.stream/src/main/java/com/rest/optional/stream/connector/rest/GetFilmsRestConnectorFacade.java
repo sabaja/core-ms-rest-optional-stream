@@ -1,4 +1,4 @@
-package com.rest.optional.stream.connector;
+package com.rest.optional.stream.connector.rest;
 
 import com.rest.optional.stream.Films;
 import com.rest.optional.stream.FilmsArray;

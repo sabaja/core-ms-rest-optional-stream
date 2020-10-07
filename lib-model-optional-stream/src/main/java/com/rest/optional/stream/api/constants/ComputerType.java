@@ -7,10 +7,11 @@ import java.util.stream.Stream;
 
 
 public enum ComputerType {
-    MAIN_FRAME("MAIN_FRAME"),
+    SERVER("SERVER"),
     PERSONAL_COMPUTER("PERSONAL_COMPUTER"),
     WORKSTATION("WORKSTATION"),
     TABLET("TABLET"),
+    PHONE("CELLULAR"),
     SUPER_COMPUTER("AI_SUPER_PC"),
     NOT_DEFINED("NOT_DEFINED");
 

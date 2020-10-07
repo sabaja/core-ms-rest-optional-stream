@@ -3,7 +3,7 @@ package com.rest.optional.stream.service.impl;
 import com.rest.optional.stream.Films;
 import com.rest.optional.stream.FilmsArray;
 import com.rest.optional.stream.api.bin.FilmsBin;
-import com.rest.optional.stream.connector.GetFilmsRestConnectorFacade;
+import com.rest.optional.stream.connector.rest.GetFilmsRestConnectorFacade;
 import com.rest.optional.stream.mapper.FilmsMapper;
 import com.rest.optional.stream.service.FilmsService;
 import lombok.extern.slf4j.Slf4j;
