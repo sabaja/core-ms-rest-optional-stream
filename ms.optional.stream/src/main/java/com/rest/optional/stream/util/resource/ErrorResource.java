@@ -26,7 +26,7 @@ public class ErrorResource<T extends RepresentationModel<? extends T>> extends R
         if (!(o instanceof ErrorResource)) return false;
         if (!super.equals(o)) return false;
 
-        ErrorResource that = (ErrorResource) o;
+        ErrorResource<T> that = (ErrorResource) o;
 
         return getReturnMessages() != null ? getReturnMessages().equals(that.getReturnMessages()) : that.getReturnMessages() == null;
     }

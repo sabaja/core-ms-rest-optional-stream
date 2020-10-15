@@ -10,12 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class ApplicationTests {
 
-	@Autowired
-	private PostComputerController controller;
+    @Autowired
+    private PostComputerController controller;
 
-	@Test
-	void contextLoads() {
-		assertThat(controller).isNotNull();
-	}
+    @Test
+    void contextLoads() {
+        assertThat(controller).isNotNull();
+    }
 
 }

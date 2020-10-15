@@ -7,6 +7,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 
 @NoRepositoryBean
@@ -27,8 +28,8 @@ public interface JpaVersionConnector<T, ID extends Serializable> extends JpaRepo
     @Transactional(readOnly = true)
     List<T> findAllDeleted();
 
-    @Query("update #{#entityName} t set t.state='DELETED' where t.id=?1")
+    @Query("update #{#entityName} t set t.state='DELETED', t.stateDate=CURRENT_TIMESTAMP where t.id=?1")
     @Transactional
     @Modifying
-    void softDelete(String id);
+    void softDelete(BigInteger id);
 }

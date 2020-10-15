@@ -1,4 +1,4 @@
-package com.rest.optional.stream.connector.repository;
+package com.rest.optional.stream.connector.jpa.repository;
 
 import com.google.common.collect.Iterables;
 import com.rest.optional.stream.api.constants.ComputerType;
@@ -20,11 +20,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.google.common.collect.Iterables.getFirst;
+import static com.google.common.collect.Iterables.size;
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class ComputerRepositoryTest {
+public class ComputerBinRepositoryTest {
     //private EnityManager enityManager;
 
     @Autowired
@@ -34,7 +35,7 @@ public class ComputerRepositoryTest {
     @SneakyThrows
 //   @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"classpath:sql/test_schema.sql", "classpath:sql/test_data.sql"})
     @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"classpath:sql/test_schema.sql", "classpath:sql/test_delete_data.sql"})
-    public void repositorySaveAndFind_ShouldExecute() {
+    public void repositorySaveAndFind_shouldExecute() {
         final ComputerEntity computerEntity = mockComputerEntities();
         final ComputerEntity entity = repository.save(computerEntity);
 
@@ -46,6 +47,9 @@ public class ComputerRepositoryTest {
         assertNotNull(state);
         assertEquals(State.INACTIVE, state);
 
+        final List<ComputerEntity> allInactive = repository.findAllInactive();
+        assertFalse(Iterables.isEmpty(allInactive));
+
         final List<ComputerEntity> allWithHistory = repository.findAllWithHistory();
         assertFalse(Iterables.isEmpty(allWithHistory));
         final ComputerEntity entity1 = getFirst(allWithHistory, null);
@@ -54,7 +58,33 @@ public class ComputerRepositoryTest {
         assertNotNull(entity1.getState());
 
         final List<ComputerEntity> allActives = repository.findAllActive();
-        assertTrue(Iterables.isEmpty(allWithHistory));
+        assertTrue(Iterables.isEmpty(allActives));
+
+        final List<ComputerEntity> allDeleted = repository.findAllDeleted();
+        assertTrue(Iterables.isEmpty(allDeleted));
+    }
+
+    @Test
+    @SneakyThrows
+    @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"classpath:sql/test_schema.sql", "classpath:sql/test_data.sql"})
+    public void repositorySoftDelete_shouldExecute() {
+        final List<ComputerEntity> allActiveComputers = repository.findAllActive();
+        assertFalse(Iterables.isEmpty(allActiveComputers));
+        final int activeComputerSize = size(allActiveComputers);
+
+        allActiveComputers.forEach(pc -> {
+            repository.softDelete(pc.getId());
+            repository.flush();
+        });
+
+        final List<ComputerEntity> allDeletedComputers = repository.findAllDeleted();
+        assertFalse(Iterables.isEmpty(allDeletedComputers));
+        final int deletedComputerSize = size(allDeletedComputers);
+        assertTrue(deletedComputerSize > activeComputerSize);
+
+        allDeletedComputers.forEach(pc -> {
+            assertEquals(State.DELETED, pc.getState());
+        });
     }
 
     private ComputerEntity mockComputerEntities() {

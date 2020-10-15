@@ -14,6 +14,10 @@ public class HttpStatusMessage {
         public static final String FORBIDDEN = "Forbidden";
         public static final String NOT_FOUND = "Not Found";
         public static final String PRECONDITION_FAILED = "Precondition Failed";
+
+        private Constants() {
+            throw new IllegalStateException("Utility class, not to be instantiated!");
+        }
     }
 
 }

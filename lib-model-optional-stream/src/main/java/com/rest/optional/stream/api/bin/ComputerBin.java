@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public final class Computer implements Serializable {
+public final class ComputerBin implements Serializable {
     private static final long serialVersionUID = 995616213150427439L;
     private BigInteger id;
     private OS os;
@@ -25,7 +25,7 @@ public final class Computer implements Serializable {
     private List<ComputerType> type;
     private LocalDate createAt;
 
-    public Computer(BigInteger id, SoundCard soundCard, String name) {
+    public ComputerBin(BigInteger id, SoundCard soundCard, String name) {
         this.id = id;
         this.soundCard = soundCard;
         this.name = name;

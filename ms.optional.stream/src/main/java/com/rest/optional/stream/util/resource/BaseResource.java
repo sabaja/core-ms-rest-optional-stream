@@ -28,7 +28,7 @@ public class BaseResource<T extends RepresentationModel<? extends T>> extends Er
         if (!(o instanceof BaseResource)) return false;
         if (!super.equals(o)) return false;
 
-        BaseResource that = (BaseResource) o;
+        BaseResource<T> that = (BaseResource) o;
 
         return getEntityId() != null ? getEntityId().equals(that.getEntityId()) : that.getEntityId() == null;
     }

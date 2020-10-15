@@ -9,22 +9,21 @@ import java.io.Serializable;
 import java.math.BigInteger;
 
 @Entity(name = "soundCardEntity")
-@Table(name = "T_PAD_SOUND_CARD")
-@SequenceGenerator(name = "sound_card_sequence", sequenceName = "sound_card_sequence", allocationSize = 1)
+@Table(schema = "REST", name = "T_PAD_SOUND_CARD")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class SoundCardEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sound_card_sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", updatable = false, nullable = false)
     private BigInteger id;
 
     @Column(name = "VERSION")
     private String version;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "USB_ID")
     private UsbEntity usb;
 

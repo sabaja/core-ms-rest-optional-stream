@@ -30,7 +30,7 @@ class GetFilmsControllerTest {
 
     @Test
     @SneakyThrows
-    void getFilms() {
+    void getFilms_shouldExecute() {
         //given
         given(filmsService.getFilms()).willReturn(mockFilms());
 
