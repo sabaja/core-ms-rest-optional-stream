@@ -33,6 +33,29 @@ public class ComputerBinRepositoryTest {
 
     @Test
     @SneakyThrows
+    @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"classpath:sql/test_schema.sql", "classpath:sql/test_data.sql"})
+    public void repositorySoftDelete_shouldExecute() {
+        final List<ComputerEntity> allActiveComputers = repository.findAllActive();
+        assertFalse(Iterables.isEmpty(allActiveComputers));
+        final int activeComputerSize = size(allActiveComputers);
+
+        allActiveComputers.forEach(pc -> {
+            repository.softDelete(pc.getId());
+            repository.flush();
+        });
+
+        final List<ComputerEntity> allDeletedComputers = repository.findAllDeleted();
+        assertFalse(Iterables.isEmpty(allDeletedComputers));
+        final int deletedComputerSize = size(allDeletedComputers);
+        assertTrue(deletedComputerSize > activeComputerSize);
+
+        allDeletedComputers.forEach(pc -> {
+            assertEquals(State.DELETED, pc.getState());
+        });
+    }
+
+    @Test
+    @SneakyThrows
 //   @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"classpath:sql/test_schema.sql", "classpath:sql/test_data.sql"})
     @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"classpath:sql/test_schema.sql", "classpath:sql/test_delete_data.sql"})
     public void repositorySaveAndFind_shouldExecute() {
@@ -62,29 +85,6 @@ public class ComputerBinRepositoryTest {
 
         final List<ComputerEntity> allDeleted = repository.findAllDeleted();
         assertTrue(Iterables.isEmpty(allDeleted));
-    }
-
-    @Test
-    @SneakyThrows
-    @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"classpath:sql/test_schema.sql", "classpath:sql/test_data.sql"})
-    public void repositorySoftDelete_shouldExecute() {
-        final List<ComputerEntity> allActiveComputers = repository.findAllActive();
-        assertFalse(Iterables.isEmpty(allActiveComputers));
-        final int activeComputerSize = size(allActiveComputers);
-
-        allActiveComputers.forEach(pc -> {
-            repository.softDelete(pc.getId());
-            repository.flush();
-        });
-
-        final List<ComputerEntity> allDeletedComputers = repository.findAllDeleted();
-        assertFalse(Iterables.isEmpty(allDeletedComputers));
-        final int deletedComputerSize = size(allDeletedComputers);
-        assertTrue(deletedComputerSize > activeComputerSize);
-
-        allDeletedComputers.forEach(pc -> {
-            assertEquals(State.DELETED, pc.getState());
-        });
     }
 
     private ComputerEntity mockComputerEntities() {

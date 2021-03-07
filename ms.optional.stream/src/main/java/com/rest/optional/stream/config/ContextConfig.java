@@ -11,6 +11,7 @@ public class ContextConfig {
 
     @Bean
     public FilmsAssembler getFilmsAssembler() {
+
         return new FilmsAssembler(GetFilmsController.class, FilmsResource.class);
     }
 }
